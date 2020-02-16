@@ -1,0 +1,110 @@
+<html>
+<head>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script>
+    var script_url = "https://script.google.com/macros/s/AKfycbw8Lt5gzcr4JDrX4PusN5BiGfvEjywbmwD_5TAD2vGUlGh7hHRC/exec";
+
+    // Make an AJAX call to Google Script
+    function insert_value() {
+      var id1 = $("#id").val();
+      var name = $("#name").val();
+      var name2 = $("#name2").val();
+      var email = $("#email").val();
+      var mobile = $("#mobile").val();
+      var address = $("#address").val();
+      var gender = $("#gender").val();
+      var dob = $("#dob").val();
+      var country = $("#country").val();
+
+
+      var url = script_url + "?callback=ctrlq&name=" + name + "&name2=" + name2 + "&id=" + id1 + "&email=" + email + "&mobile=" + mobile + "&address=" + address + "&gender=" + gender + "&dob=" + dob + "&country=" + country + "&action=insert";
+
+
+      var request = jQuery.ajax({
+        crossDomain: true,
+        url: url,
+        method: "GET",
+        dataType: "jsonp"
+      });
+
+    }
+
+    function ctrlq(e) {
+
+
+  $("#re").html(e.result);
+  $("#re").css("visibility","visible");
+  read_value();
+
+  }
+
+  function read_value() {
+  }
+
+  </script>
+
+  </head>
+
+<body class="background">
+  <div align="center">
+    <h1 class="ciheading">Club Illuminati</h1>
+  </div>
+  <form>
+    <table border="1" align="center" width="400" bgcolor="#ef8172">
+      <caption>Registration form</caption>
+      <tr>
+        <th>Enter your Registration Number</th>
+        <td><input type="text" name="id1" id="id" maxlength="10" title="enter your first name" placeholder="enter your first name" required /></td>
+      </tr>
+      <tr>
+        <th>Enter your first name</th>
+        <td><input type="text" name="Firstname" id="name" maxlength="10" title="enter your first name" placeholder="enter your first name" required /></td>
+      </tr>
+      <tr>
+        <th>Enter your last name</th>
+        <td><input type="text" placeholder="enter your last name" name="Lastname" id="name2" required/></td>
+      </tr>
+      <tr>
+        <th>Enter your email</th>
+        <td><input type="email" placeholder="enter your email" name="Email" id="email" required/></td>
+      </tr>
+      <tr>
+        <th>Enter your mobile</th>
+        <td><input placeholder="enter your phone number" type="number" name="Mobile" id="mobile" required /></td>
+      </tr>
+      <tr>
+        <th>Enter your address</th>
+        <td><textarea rows="8" cols="20" name="Address" id="address" required></textarea></td>
+      </tr>
+      <tr>
+        <th>Select your gender</th>
+        <td>
+          male<input type="radio" name="Gender" value="m" id="gender" required/>
+          female<input type="radio" name="Gender" value="f" id="gender" required/>
+        </td>
+      </tr>
+      <tr>
+        <th>Select your DOB</th>
+        <td><input type="date" name="DOB" id="dob" required/></td>
+      </tr>
+      <tr>
+        <th>Select your Country</th>
+        <td>
+          <select name="country" id="country" required>
+            <option value="" selected="selected" disabled="disabled">Select your country</option>
+            <option value="India">India </option>
+            <option value="Others">Others</option>
+          </select>
+        </td>
+      </tr
+      <tr>
+        <td colspan="2" align="center"><input type="submit" value="Save My Data" onClick="insert_value()" />
+          <input type="reset" value="Reset Data" />
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html

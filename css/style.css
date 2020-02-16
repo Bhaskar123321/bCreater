@@ -1,0 +1,10 @@
+body{
+  background-image: url("backg.jpg");
+  height: 100px;
+  background-position: center;
+}
+
+h1 {
+  color: #ff4c68;
+  font-size: 4rem;
+}
